@@ -1,0 +1,25 @@
+# Education, newest first is computed from `start`. Every text field has `en` and `it`.
+- id: msc
+  title: { en: MSc in Computer Science, it: Laurea Magistrale in Informatica }
+  school: University of Trento
+  url: https://www.unitn.it/
+  location: { en: Trento, Italy, it: Trento }
+  start: 2024-09-09
+  end: 2026-12-16
+  expected: true
+  thesis: "VollAI: a machine learning system for tactical analysis in professional volleyball"
+  description:
+    en: A programme between machine learning, data science and cybersecurity. Security testing and ethical hacking with hands-on exploitation of real applications; machine learning on network traffic for intrusion and anomaly detection; how large AI systems are designed and put into production beyond the model itself.
+    it: Un percorso tra machine learning, data science e cybersecurity. Security testing ed ethical hacking con exploit pratici su applicazioni reali; machine learning sul traffico di rete per intrusion e anomaly detection; progettazione e messa in produzione di grandi sistemi di AI, oltre il modello.
+
+- id: bsc
+  title: { en: BSc in Computer Engineering, it: Laurea Triennale in Ingegneria Informatica }
+  school: University of Trento
+  url: https://www.unitn.it/
+  location: { en: Trento, Italy, it: Trento }
+  start: 2021-09-16
+  end: 2024-09-17
+  thesis: "Sviluppo di un'Applicazione Web con Componenti AI: Sfide e Soluzioni Tecnologiche"
+  description:
+    en: Programming in C, C++, Java and Python with a focus on data structures and algorithms; calculus, linear algebra, probability and statistics, physics and signal processing. Final-year courses in machine learning and cybersecurity, the two areas I then chose for my Master's.
+    it: Programmazione in C, C++, Java e Python con focus su strutture dati e algoritmi; analisi, algebra lineare, probabilità e statistica, fisica ed elaborazione dei segnali. All'ultimo anno i corsi di machine learning e cybersecurity, le due aree che ho poi scelto per la magistrale.

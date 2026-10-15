@@ -1,0 +1,29 @@
+---
+/** A project pipeline drawn as numbered steps: horizontal on wide screens, vertical on phones. */
+interface Props {
+  steps: readonly string[];
+  label: string;
+}
+const { steps, label } = Astro.props;
+---
+
+<figure class="my-8">
+  <figcaption class="mb-3 font-mono text-xs text-muted-foreground">$ {label.toLowerCase()} --show</figcaption>
+  <ol class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-stretch">
+    {
+      steps.map((step, i) => (
+        <li class="flex items-center gap-2 sm:gap-2">
+          <span class="flex min-h-12 flex-1 items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm">
+            <span class="font-mono text-xs text-brand">{String(i + 1).padStart(2, '0')}</span>
+            <span>{step}</span>
+          </span>
+          {i < steps.length - 1 && (
+            <span class="hidden font-mono text-muted-foreground sm:inline" aria-hidden="true">
+              →
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</figure>

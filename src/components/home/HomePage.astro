@@ -1,0 +1,221 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/home/Hero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { Badge } from '@/components/ui/badge';
+import { buttonVariants } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { site, skills, type SkillGroup } from '@/data/site';
+import { formatMonth, localizePath, useTranslations, type Lang } from '@/i18n/ui';
+import { getEducation, getExperience, getProjects, projectSlug } from '@/lib/content';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const [experience, education, projects] = await Promise.all([getExperience(), getEducation(), getProjects(lang)]);
+const period = (start: Date, end?: Date) => `${formatMonth(start, lang)} – ${end ? formatMonth(end, lang) : t('experience.present')}`;
+const skillGroups = Object.entries(skills) as [SkillGroup, readonly string[]][];
+const kindLabel = {
+  en: { thesis: 'MSc thesis', personal: 'Personal project', university: 'University project' },
+  it: { thesis: 'Tesi magistrale', personal: 'Progetto personale', university: 'Progetto universitario' },
+}[lang];
+---
+
+<BaseLayout lang={lang} path="/">
+  <Hero lang={lang} />
+
+  <section class="mx-auto max-w-5xl px-4 py-16 sm:px-6" aria-labelledby={t('section.about')}>
+    <SectionHeading id={t('section.about')} label="about" title={t('nav.about')} />
+    <div class="grid gap-8 md:grid-cols-[2fr_1fr]">
+      <div class="space-y-4 leading-relaxed text-foreground/90">
+        <p>{t('about.p1')}</p>
+        <p>{t('about.p2')}</p>
+        <p>{t('about.p3')}</p>
+      </div>
+      <dl class="space-y-4 text-sm">
+        <div>
+          <dt class="font-mono text-xs text-muted-foreground">{t('about.languages')}</dt>
+          <dd class="mt-1">{t('about.languagesValue')}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-xs text-muted-foreground">Email</dt>
+          <dd class="mt-1"><a class="underline-offset-4 hover:text-brand hover:underline" href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="border-y border-border/60 bg-muted/30" aria-labelledby={t('section.experience')}>
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <SectionHeading id={t('section.experience')} label="experience" title={t('nav.experience')} />
+      <ol class="relative space-y-10 border-l border-border pl-6">
+        {
+          experience.map(({ data }) => (
+            <li class="relative">
+              <span class="absolute -left-[1.86rem] top-1.5 size-3 rounded-full border-2 border-brand bg-background" aria-hidden="true" />
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 class="text-lg font-semibold">
+                  {data.role[lang]}
+                  <span class="font-normal text-muted-foreground">
+                    {' · '}
+                    {data.url ? (
+                      <a href={data.url} target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:text-brand hover:underline">
+                        {data.company}
+                      </a>
+                    ) : (
+                      data.company
+                    )}
+                  </span>
+                </h3>
+                <p class="shrink-0 font-mono text-xs text-muted-foreground">{period(data.start, data.end)}</p>
+              </div>
+              <p class="mt-0.5 text-sm text-muted-foreground">{data.location[lang]}</p>
+              {data.summary && <p class="mt-3 text-sm leading-relaxed">{data.summary[lang]}</p>}
+              <ul class="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed marker:text-brand">
+                {data.highlights[lang].map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+              {data.tags.length > 0 && (
+                <ul class="mt-3 flex flex-wrap gap-1.5">
+                  {data.tags.map((tag) => (
+                    <li>
+                      <Badge variant="secondary" className="font-mono">
+                        {tag}
+                      </Badge>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-16 sm:px-6" aria-labelledby={t('section.education')}>
+    <SectionHeading id={t('section.education')} label="education" title={t('nav.education')} />
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        education.map(({ data }) => (
+          <Card>
+            <CardHeader>
+              <p class="font-mono text-xs text-muted-foreground">
+                {formatMonth(data.start, lang)} – {formatMonth(data.end, lang)}
+                {data.expected && ` (${t('education.expected')})`}
+              </p>
+              <CardTitle className="text-lg">{data.title[lang]}</CardTitle>
+              <CardDescription>
+                {data.school} · {data.location[lang]}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm leading-relaxed">
+              {data.thesis && (
+                <p>
+                  <span class="font-mono text-xs text-brand">{t('education.thesis')}:</span> <em>{data.thesis}</em>
+                </p>
+              )}
+              <p class="text-muted-foreground">{data.description[lang]}</p>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="border-y border-border/60 bg-muted/30" aria-labelledby={t('section.projects')}>
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <SectionHeading id={t('section.projects')} label="projects" title={t('nav.projects')} />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          projects.map((p) => {
+            const href = localizePath(`/projects/${projectSlug(p)}`, lang);
+            return (
+              <Card className="flex flex-col">
+                <CardHeader>
+                  <p class="font-mono text-xs text-brand">{kindLabel[p.data.kind]}</p>
+                  <CardTitle className="text-lg">
+                    <a href={href} class="hover:text-brand">
+                      {p.data.title}
+                    </a>
+                  </CardTitle>
+                  <p class="font-mono text-xs text-muted-foreground">{p.data.period}</p>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                  <p class="text-sm leading-relaxed text-muted-foreground">{p.data.summary}</p>
+                  <ul class="flex flex-wrap gap-1.5">
+                    {p.data.stack.slice(0, 5).map((s) => (
+                      <li>
+                        <Badge variant="outline" className="font-mono">
+                          {s}
+                        </Badge>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardFooter className="gap-2">
+                  <a class={buttonVariants({ variant: 'secondary', size: 'sm' })} href={href} aria-label={`${t('projects.more')}: ${p.data.title}`}>
+                    {t('projects.more')} →
+                  </a>
+                  {p.data.live && (
+                    <a class={buttonVariants({ variant: 'ghost', size: 'sm' })} href={p.data.live} target="_blank" rel="noopener noreferrer">
+                      {t('projects.live')} ↗
+                    </a>
+                  )}
+                </CardFooter>
+              </Card>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-16 sm:px-6" aria-labelledby={t('section.skills')}>
+    <SectionHeading id={t('section.skills')} label="skills" title={t('nav.skills')} />
+    <dl class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        skillGroups.map(([group, items]) => (
+          <div>
+            <dt class="font-mono text-sm font-medium">
+              <span class="text-brand">#</span> {t(`skills.${group}`)}
+            </dt>
+            <dd class="mt-2">
+              <ul class="flex flex-wrap gap-1.5">
+                {items.map((s) => (
+                  <li>
+                    <Badge variant="secondary" className="font-mono">
+                      {s}
+                    </Badge>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="border-t border-border/60 bg-muted/30" aria-labelledby={t('section.contact')}>
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <SectionHeading id={t('section.contact')} label="contact" title={t('nav.contact')} />
+      <p class="max-w-2xl leading-relaxed text-muted-foreground">{t('contact.text')}</p>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <a class={buttonVariants({ size: 'lg' })} href={`mailto:${site.email}`}>{site.email}</a>
+        {
+          site.linkedin && (
+            <a class={buttonVariants({ variant: 'outline', size: 'lg' })} href={site.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+          )
+        }
+        <a class={buttonVariants({ variant: 'outline', size: 'lg' })} href={site.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

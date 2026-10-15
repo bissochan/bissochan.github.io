@@ -1,0 +1,33 @@
+# ===== Secrets (always) =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# ===== OS (always) =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Editors (always) =====
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# ===== Claude Code (always) =====
+.claude/settings.local.json
+
+# ===== Node / Astro =====
+node_modules/
+dist/
+.astro/
+npm-debug.log*
+yarn-error.log*
+.lighthouseci/
+
+# ===== Logs =====
+*.log
+logs/

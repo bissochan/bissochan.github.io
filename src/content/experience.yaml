@@ -1,0 +1,80 @@
+# Work experience, newest first is computed from `start`. Every text field has `en` and `it`.
+- id: msoft-ml
+  company: mSoft srl
+  url: https://www.msoftsrl.it/
+  location: { en: Verona, Italy, it: Verona }
+  role: { en: Machine Learning Intern (university internship), it: Machine Learning Intern (tirocinio curricolare) }
+  start: 2026-04-24
+  end: 2026-09-24
+  highlights:
+    en:
+      - Built VollAI on my own, a Python system that predicts the setter's distribution from game context, trained on DataVolley scouting data from about 1,000 Italian Superlega matches
+      - Wrote the full data pipeline, from .dvw import into MySQL to per-skill feature engineering; trained XGBoost and CatBoost models with match-level splits and explained them with SHAP
+      - Prototyped a computer-vision step (YOLOv8 + court homography) that locates blockers in match video, and served the models through a FastAPI backend
+    it:
+      - Ho sviluppato da solo VollAI, un sistema in Python che predice la distribuzione dell'alzatore dal contesto di gioco, addestrato sui dati di scouting DataVolley di circa 1.000 partite di Superlega
+      - Ho scritto l'intera pipeline dei dati, dall'import dei file .dvw in MySQL al feature engineering per fondamentale; ho addestrato modelli XGBoost e CatBoost con split per partita e li ho spiegati con SHAP
+      - Ho prototipato uno step di computer vision (YOLOv8 + omografia del campo) che localizza i muri nei video delle partite, e ho servito i modelli con un backend FastAPI
+  tags: [Python, XGBoost, CatBoost, SHAP, YOLOv8, FastAPI, MySQL]
+
+- id: msoft-swe
+  company: mSoft srl
+  url: https://www.msoftsrl.it/
+  location: { en: Verona, Italy, it: Verona }
+  role: { en: Software Engineering Intern, it: Software Engineering Intern (tirocinio extracurricolare) }
+  start: 2025-09-10
+  end: 2025-12-10
+  highlights:
+    en:
+      - Migrated an existing application and its services from a traditional server to Docker containers on a Kubernetes cluster on Akamai Cloud
+      - Set up deployment and service configuration for the new environment with Helm
+      - Built an early prototype of an agent workflow with Microsoft Semantic Kernel and MCP
+    it:
+      - Ho migrato un'applicazione esistente e i suoi servizi da un server tradizionale a container Docker su un cluster Kubernetes su Akamai Cloud
+      - Ho curato il deployment e la configurazione dei servizi nel nuovo ambiente con Helm
+      - Ho realizzato un primo prototipo di workflow ad agenti con Microsoft Semantic Kernel e MCP
+  tags: [Docker, Kubernetes, Helm, Akamai Cloud, Semantic Kernel, MCP]
+
+- id: seac
+  company: SEAC
+  url: https://www.seac.it/
+  location: { en: Trento, Italy, it: Trento }
+  role: { en: Desktop Application Developer, it: Desktop Application Developer }
+  start: 2025-01-06
+  end: 2025-03-14
+  summary:
+    en: Software Factory, Tax Returns department. C# desktop application used by tax assistance centres (CAF) across Italy to prepare and process tax returns (730 and related forms).
+    it: Software Factory, reparto Redditi. Applicazione desktop in C# usata dai CAF in tutta Italia per preparare ed elaborare le dichiarazioni dei redditi (730 e modelli collegati).
+  highlights:
+    en:
+      - Built new features and improved the performance of existing modules in C# and DevExpress
+      - Worked with financial analysts to turn changes in tax rules into software requirements
+      - Agile team with sprints tracked in Azure DevOps, Git for version control
+    it:
+      - Ho sviluppato nuove funzionalità e migliorato le prestazioni di moduli esistenti in C# e DevExpress
+      - Ho lavorato con gli analisti fiscali per tradurre le modifiche normative in requisiti software
+      - Team Agile con sprint gestiti in Azure DevOps, Git per il versionamento
+  tags: [C#, .NET, DevExpress, Azure DevOps, Agile]
+
+- id: codenotion
+  company: Codenotion Ltd
+  url: https://www.codenotionltd.com/
+  location: { en: Nicosia, Cyprus (remote), it: Nicosia, Cipro (da remoto) }
+  role: { en: Full-Stack Developer, it: Full-Stack Developer }
+  start: 2023-12-04
+  end: 2024-10-01
+  summary:
+    en: Web applications with AI features, C#/.NET on the backend and Angular on the frontend. Started with the company's five-month .NET & Angular Academy.
+    it: Web application con funzionalità di AI, C#/.NET nel backend e Angular nel frontend. Ho iniziato con la .NET & Angular Academy dell'azienda, di cinque mesi.
+  highlights:
+    en:
+      - Built the backend with ASP.NET and Entity Framework, including REST APIs, several microservices and custom request-handling middleware
+      - Developed a chatbot on Mixtral 8x7B, on both backend and frontend (Angular, TypeScript)
+      - Worked on AiLead, a tool that uses GPT and Mistral models to generate business ideas, and added shell agents that write and run code as part of the workflow
+      - Fine-tuned models in Python on Google Colab for the company's applications
+    it:
+      - Ho sviluppato il backend con ASP.NET ed Entity Framework, tra cui API REST, diversi microservizi e middleware personalizzati per la gestione delle richieste
+      - Ho sviluppato un chatbot basato su Mixtral 8x7B, sia backend sia frontend (Angular, TypeScript)
+      - Ho lavorato su AiLead, uno strumento che usa modelli GPT e Mistral per generare idee di business, aggiungendo agenti shell che scrivono ed eseguono codice nel workflow
+      - Ho fatto fine-tuning di modelli in Python su Google Colab per le applicazioni dell'azienda
+  tags: [C#, ASP.NET, Entity Framework, Angular, TypeScript, LLM, Python]

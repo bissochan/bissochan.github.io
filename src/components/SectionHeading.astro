@@ -1,0 +1,15 @@
+---
+interface Props {
+  /** Visible heading text. */
+  title: string;
+  /** Short mono label shown as a code comment, e.g. "experience". */
+  label: string;
+  id: string;
+}
+const { title, label, id } = Astro.props;
+---
+
+<div class="mb-8">
+  <p class="font-mono text-xs text-brand" aria-hidden="true">// {label}</p>
+  <h2 id={id} class="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
+</div>

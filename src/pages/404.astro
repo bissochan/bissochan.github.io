@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { buttonVariants } from '@/components/ui/button';
+import { useTranslations } from '@/i18n/ui';
+
+// Static hosting serves a single 404 page, so it is in English with a link to both home pages.
+const t = useTranslations('en');
+---
+
+<BaseLayout lang="en" path="/404" title={t('404.title')}>
+  <section class="mx-auto flex max-w-3xl flex-col items-start px-4 py-24 sm:px-6">
+    <p class="font-mono text-sm text-muted-foreground"><span class="text-brand">~/luca-bissoli</span> $ cd ./missing-page</p>
+    <p class="mt-1 font-mono text-sm text-destructive">bash: cd: ./missing-page: No such file or directory</p>
+    <h1 class="mt-6 text-3xl font-semibold tracking-tight">{t('404.title')}</h1>
+    <p class="mt-2 text-muted-foreground">{t('404.text')}</p>
+    <div class="mt-6 flex gap-3">
+      <a class={buttonVariants()} href="/">{t('404.back')}</a>
+      <a class={buttonVariants({ variant: 'outline' })} href="/it/" lang="it">Home (italiano)</a>
+    </div>
+  </section>
+</BaseLayout>

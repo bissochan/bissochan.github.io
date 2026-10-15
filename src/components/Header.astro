@@ -1,0 +1,57 @@
+---
+import ThemeToggle from '@/components/ThemeToggle.astro';
+import MobileNav from '@/components/MobileNav';
+import { localizePath, useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const home = localizePath('/', lang);
+const otherLang: Lang = lang === 'en' ? 'it' : 'en';
+
+const links = (['about', 'experience', 'education', 'projects', 'skills', 'contact'] as const).map((key) => ({
+  label: t(`nav.${key}`),
+  href: `${home}#${t(`section.${key}`)}`,
+}));
+---
+
+<header class="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+  <div class="mx-auto flex h-14 max-w-5xl items-center gap-4 px-4 sm:px-6">
+    <a href={home} class="font-mono text-sm font-medium tracking-tight hover:text-brand" aria-label={`${t('nav.home')} — Luca Bissoli`}>
+      <span class="text-brand" aria-hidden="true">~/</span>luca-bissoli
+    </a>
+
+    <nav aria-label="Main" class="ml-auto hidden md:block">
+      <ul class="flex items-center gap-1 text-sm">
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} class="rounded-md px-2.5 py-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="ml-auto flex items-center gap-1 md:ml-2">
+      <a
+        href={localizePath(path, otherLang)}
+        hreflang={otherLang}
+        lang={otherLang}
+        class="inline-flex h-9 items-center rounded-md px-2.5 font-mono text-xs font-medium uppercase text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        aria-label={t('lang.switch')}
+        title={t('lang.switch')}
+      >
+        {otherLang}
+      </a>
+      <ThemeToggle label={t('theme.toggle')} />
+      <MobileNav client:media="(max-width: 767px)" links={links} menuLabel={t('nav.menu')} />
+    </div>
+  </div>
+</header>

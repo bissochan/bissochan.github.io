@@ -1,0 +1,39 @@
+---
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  aria-label={label}
+  title={label}
+  aria-pressed="false"
+  class="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+>
+  <!-- sun (shown in dark mode) -->
+  <svg class="hidden size-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+  </svg>
+  <!-- moon (shown in light mode) -->
+  <svg class="size-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>
+  </svg>
+</button>
+
+<script>
+  const root = document.documentElement;
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+    button.setAttribute('aria-pressed', String(root.classList.contains('dark')));
+    button.addEventListener('click', () => {
+      const dark = root.classList.toggle('dark');
+      button.setAttribute('aria-pressed', String(dark));
+      try {
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      } catch {}
+    });
+  }
+</script>
