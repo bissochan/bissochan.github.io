@@ -29,7 +29,7 @@ Fonte principale dei contenuti: CV `Bissoli_cv_postMaster.pdf` (Europass, ottobr
 | Q21 | Skills | Per gruppi (ML & Data, Backend, Frontend, DevOps, AI/LLM), senza livelli; esclusi Office, Blender, blockchain |
 | Q22 | Badge | "Open to opportunities", attivabile/disattivabile |
 | Q23 | Refusi | Corretti sul sito (engineering, VollAI, University of Trento) |
-| Q24 | Repo | `C:\Users\bissochan\source\repos\personal-site`, git locale, npm; repo GitHub `bissochan.github.io` |
+| Q24 | Repo | `C:\Users\bissochan\Desktop\coding\github\personal-site` (spostato da `source\repos` il 16/10/2026), git locale, npm; repo GitHub `bissochan.github.io` |
 
 ## Fase 2 — Requisiti dai personaggi del target
 
