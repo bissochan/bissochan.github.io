@@ -30,9 +30,16 @@ jobs:
       - run: npm audit --audit-level=high
       - run: npm run check
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v4
+      # Same archive upload-pages-artifact builds, but without its ".[^/]*" exclude,
+      # which would drop dist/.well-known/security.txt.
+      - name: Archive site
+        run: tar --dereference --hard-dereference --directory dist -cf "$RUNNER_TEMP/artifact.tar" .
+      - uses: actions/upload-artifact@v5
         with:
-          path: dist
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
