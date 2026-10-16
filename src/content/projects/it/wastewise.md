@@ -4,7 +4,7 @@ summary: Web app per la gestione dei rifiuti urbani sviluppata in team per una c
 kind: university
 period: mar 2024 – giu 2024
 role: Progetto di gruppo, corso di Ingegneria del Software
-order: 3
+order: 4
 stack: [TypeScript, React, Docker]
 live: https://wastewise.duckdns.org/
 ---

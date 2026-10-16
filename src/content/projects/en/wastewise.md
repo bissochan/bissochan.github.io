@@ -4,7 +4,7 @@ summary: Web app for urban waste management built with a team for a University o
 kind: university
 period: Mar 2024 – Jun 2024
 role: Team project, Software Engineering course
-order: 3
+order: 4
 stack: [TypeScript, React, Docker]
 live: https://wastewise.duckdns.org/
 ---
