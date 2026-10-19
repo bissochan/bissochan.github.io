@@ -25,7 +25,7 @@ export const site = {
 
 /** Skills grouped by area, no proficiency levels. Group titles are translated in i18n/ui.ts. */
 export const skills = {
-  ml: ['Python', 'XGBoost', 'CatBoost', 'SHAP', 'scikit-learn', 'YOLOv8'],
+  ml: ['Python', 'XGBoost', 'CatBoost', 'SHAP', 'scikit-learn', 'YOLOv8', 'Reinforcement learning (PPO)'],
   ai: ['RAG', 'Ollama', 'Semantic Kernel', 'MCP', 'GPT / Mistral APIs', 'Fine-tuning', 'sentence-transformers'],
   backend: ['C#', '.NET / ASP.NET', 'Entity Framework', 'FastAPI', 'REST APIs', 'Microservices', 'SQL / MySQL', 'SQLite'],
   frontend: ['TypeScript', 'Angular', 'React', 'HTML / CSS'],
