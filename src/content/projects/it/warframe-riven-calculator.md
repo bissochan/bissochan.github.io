@@ -4,7 +4,7 @@ summary: Web app statica che valuta i riven mod di Warframe rispetto a tutti i t
 kind: personal
 period: ott 2026
 role: Progetto personale, unico sviluppatore
-order: 3
+order: 4
 stack: [TypeScript, React, Vite, Vitest, Web Workers, GitHub Actions]
 live: https://bissochan.github.io/warframe-riven-calculator/
 repo: https://github.com/bissochan/warframe-riven-calculator

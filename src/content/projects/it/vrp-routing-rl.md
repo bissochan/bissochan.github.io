@@ -4,7 +4,7 @@ summary: Routing multi-deposito delle consegne nell'area di Parigi, confrontando
 kind: university
 period: "2025"
 role: Progetto di gruppo (magistrale), responsabile della parte di reinforcement learning
-order: 4
+order: 5
 stack: [Python, Stable-Baselines3, PPO, Gymnasium, NumPy, OSRM, Folium, Plotly]
 pipeline:
   - Clienti e richieste multi-risorsa

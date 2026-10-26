@@ -4,7 +4,7 @@ summary: Static web app that grades Warframe riven mods against every roll their
 kind: personal
 period: Oct 2026
 role: Personal project, sole developer
-order: 3
+order: 4
 stack: [TypeScript, React, Vite, Vitest, Web Workers, GitHub Actions]
 live: https://bissochan.github.io/warframe-riven-calculator/
 repo: https://github.com/bissochan/warframe-riven-calculator

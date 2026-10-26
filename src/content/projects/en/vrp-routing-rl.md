@@ -4,7 +4,7 @@ summary: Multi-depot delivery routing around Paris, comparing greedy, ant colony
 kind: university
 period: "2025"
 role: Team project (MSc), lead on the reinforcement-learning component
-order: 4
+order: 5
 stack: [Python, Stable-Baselines3, PPO, Gymnasium, NumPy, OSRM, Folium, Plotly]
 pipeline:
   - Clients and multi-resource demands

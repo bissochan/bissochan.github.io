@@ -4,7 +4,7 @@ summary: A local question-answering bot over the whole Warframe wiki, with hybri
 kind: personal
 period: Oct 2026
 role: Personal project, sole developer
-order: 2
+order: 3
 stack: [Python, BeautifulSoup, SQLite FTS5, bge-m3, sentence-transformers, PyTorch, Ollama, Qwen3, Docker]
 pipeline:
   - Polite crawler (sitemap)

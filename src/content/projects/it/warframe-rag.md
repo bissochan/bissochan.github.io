@@ -4,7 +4,7 @@ summary: Un bot locale che risponde alle domande su tutto il wiki di Warframe, c
 kind: personal
 period: ott 2026
 role: Progetto personale, unico sviluppatore
-order: 2
+order: 3
 stack: [Python, BeautifulSoup, SQLite FTS5, bge-m3, sentence-transformers, PyTorch, Ollama, Qwen3, Docker]
 pipeline:
   - Crawler rispettoso (sitemap)
